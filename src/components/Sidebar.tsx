@@ -35,7 +35,7 @@ export default function Sidebar({ activeView, onViewChange, userData, onLogout }
     <div className="w-64 h-full bg-white border-r border-gray-200 p-6 flex flex-col">
       <div className="">
       <img
-          src="./Terra.png" // Replace with your image path
+          src="/Terra.png" // Replace with your image path
           alt="Your Logo"
           width={200}
           height={80}
