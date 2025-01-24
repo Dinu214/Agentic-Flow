@@ -33,8 +33,14 @@ export default function Sidebar({ activeView, onViewChange, userData, onLogout }
 
   return (
     <div className="w-64 h-full bg-white border-r border-gray-200 p-6 flex flex-col">
-      <div className="mb-8">
-        <h1 className="text-xl font-bold text-gray-800">Terra Agents</h1>
+      <div className="">
+      <img
+          src="./Terra.png" // Replace with your image path
+          alt="Your Logo"
+          width={200}
+          height={80}
+          className="w-auto h-13"
+        />
       </div>
       
       <nav className="flex-grow overflow-y-auto">

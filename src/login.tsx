@@ -24,7 +24,7 @@ const AuthPage = ({ onAuthSuccess }: AuthPageProps) => {
           />
         ) : (
           <SignupForm
-            onAuthSuccess={onAuthSuccess}
+            onAuthSuccess={(userData: { email: string; username: string; firstName: string; lastName: string; }) => onAuthSuccess({ email: userData.username })}
             onLoginClick={() => setAuthMode('login')}
           />
         )}

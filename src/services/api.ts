@@ -93,13 +93,16 @@ export const authService = {
       console.log('Admin token obtained successfully');
 
       // Step 2: Create new user
-      const userResponse = await api.post(
+      await api.post(
         `/admin/realms/${REALM}/users`,
         {
           username: credentials.username,
           email: credentials.email,
           firstName: credentials.firstName,
           lastName: credentials.lastName,
+          attributes: {
+            mobile: [credentials.mobile]
+          },
           enabled: true,
           credentials: [{
             type: 'password',
@@ -115,32 +118,11 @@ export const authService = {
         }
       );
 
-      if (userResponse.status >= 400) {
-        throw new Error(`Failed to create user: ${userResponse.data?.errorMessage || 'Unknown error'}`);
-      }
-
-      // Step 3: Get user token after successful creation
-      const userTokenData = new URLSearchParams();
-      userTokenData.append('client_id', CLIENT_ID);
-      userTokenData.append('grant_type', 'password');
-      userTokenData.append('username', credentials.username);
-      userTokenData.append('password', credentials.password);
-
-      if (CLIENT_SECRET) {
-        userTokenData.append('client_secret', CLIENT_SECRET);
-      }
-
-      const userTokenResponse = await api.post(
-        `/realms/${REALM}/protocol/openid-connect/token`,
-        userTokenData.toString(),
-        {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        }
-      );
-      console.log('User token response:', userTokenResponse.data);
-      return userTokenResponse.data;
+      // Step 3: Use existing login method to get user token
+      return await this.login({
+        username: credentials.username,
+        password: credentials.password
+      });
 
     } catch (error: unknown) {
       if (error instanceof Error) {

@@ -28,6 +28,7 @@ const initialModels: Model[] = [
         task: 'Database Management',
         taskId: 1,
         temperature: 0.7,
+        apiKey: '',
         memory: 5,
         tools: []
       }
@@ -56,7 +57,8 @@ const initialAgents: Agent[] = [
     taskId: 1,
     temperature: 0.7,
     memory: 5,
-    tools: []
+    tools: [],
+    apiKey: ''
   },
   {
     id: 2,
@@ -66,9 +68,10 @@ const initialAgents: Agent[] = [
     llm: 'GPT-4',
     task: 'Data Visualization',
     taskId: 2,
-    temperature: 0.7,
     memory: 8,
-    tools: []
+    apiKey: '',
+    tools: [],
+    temperature: 0
   }
 ];
 
