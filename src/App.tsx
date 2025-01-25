@@ -113,7 +113,7 @@ const initialTools: Tool[] = [
   },
   {
     id: 2,
-    name: 'Document Scanner',
+    name: 'PDF Scanner',
     description: 'PDF document processor',
     type: 'pdf',
     maxFileSize: 10,
@@ -123,12 +123,99 @@ const initialTools: Tool[] = [
   {
     id: 3,
     name: 'RAG',
-    description: 'Rag tool',
+    description: 'Retrieval augmented generation',
     type: 'rag',
     selectedFiles: fileNames,
     fetchChunks: 4,
     config: {}
-  }
+  },
+  {
+    id: 4,
+    name: 'DALL-E',
+    description: 'Image generation AI',
+    type: 'dalle',
+    apiKey: 'your-api-key',
+    model: 'dall-e-3',
+    maxTokens: 1000,
+    config: {}
+  },
+  {
+    id: 5,
+    name: 'Code Interpreter',
+    description: 'Code execution tool',
+    type: 'code-interpreter',
+    runtime: 'python3',
+    timeout: 30,
+    config: {}
+  },
+  {
+    id: 6,
+    name: 'Directory Scanner',
+    description: 'Directory operations',
+    type: 'directory',
+    basePath: './data',
+    recursive: true,
+    includePatterns: ['*.txt'],
+    excludePatterns: ['node_modules'],
+    config: {}
+  },
+  {
+    id: 7,
+    name: 'Document Scanner',
+    description: 'Docx document processor',
+    type: 'docx',
+    maxFileSize: 10,
+    allowedExtensions: ['.docx'],
+    config: {}
+  },
+  {
+    id: 8,
+    name: 'Text Scanner',
+    description: 'txt document processor',
+    type: 'txt',
+    maxFileSize: 10,
+    allowedExtensions: ['.txt'],
+    config: {}
+  },
+  {
+    id: 9,
+    name: 'Json Scanner',
+    description: 'Json document processor',
+    type: 'json',
+    maxFileSize: 10,
+    allowedExtensions: ['.json'],
+    config: {}
+  },
+  {
+    id: 10,
+    name: 'YouTube Video',
+    description: 'youtube video processor',
+    type: 'youtube-video',
+    link: '',
+    apiKey: 'your-api-key',
+    searchDepth: 1,
+    config: {}
+  },
+  {
+    id: 11,
+    name: 'GitHub Tool',
+    description: 'github repo processor',
+    type: 'github',
+    link: '',
+    config: {}
+  },
+  {
+    id: 12,
+    name: 'Website Search Tool',
+    description: 'website search',
+    type: 'website-search',
+    Url: '',
+    headers : '',
+    config: {}
+  },
+
+
+
 ];
 
 function App() {  const [isAuthenticated, setIsAuthenticated] = useState(false);

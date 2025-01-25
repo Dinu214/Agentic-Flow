@@ -85,8 +85,8 @@ export interface FileTool extends BaseTool {
 
 export interface WebTool extends BaseTool {
   type: 'browser' | 'website-search' | 'scrape-website' | 'scrape-element' | 'firecrawl-search' | 'firecrawl-crawl' | 'firecrawl-scrape';
-  baseUrl?: string;
-  headers?: Record<string, string>;
+  Url?: string;
+  headers?: string;
   timeout?: number;
 }
 
@@ -105,16 +105,23 @@ export interface RagToolConfig extends BaseTool {
 }
 
 export interface CodeTool extends BaseTool {
-  type: 'code-interpreter' | 'code-docs' | 'github';
+  type: 'code-interpreter' | 'code-docs';
   runtime?: string;
   memoryLimit?: number;
+  timeout?: number;
+}
+
+export interface GitTool extends BaseTool {
+  type: 'github';
+  runtime?: string;
+  link: string;
   timeout?: number;
 }
 
 export interface SearchTool extends BaseTool {
   type: 'youtube-channel' | 'youtube-video' | 'exa';
   apiKey?: string;
-  maxResults?: number;
+  link: string;
   searchDepth?: number;
 }
 
@@ -131,6 +138,7 @@ export type Tool =
   | FileTool 
   | WebTool 
   | AITool 
+  |GitTool
   | RagToolConfig
   | CodeTool 
   | SearchTool 

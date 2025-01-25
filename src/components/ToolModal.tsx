@@ -274,6 +274,87 @@ export default function ToolModal({ isOpen, onClose, onSave, tool, viewMode }: T
             </div>
           </>
         );
+      // Add this inside renderToolSpecificFields() switch statement
+
+      case 'youtube-video':
+        return (
+          <>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Video URL</label>
+              <input
+                type="text"
+                value={formData.config?.videoUrl || ''}
+                onChange={(e) => setFormData({
+                  ...formData,
+                  config: { ...formData.config, videoUrl: e.target.value }
+                })}
+                placeholder="https://www.youtube.com/watch?v=..."
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                disabled={viewMode}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">API Key</label>
+              <input
+                type="password"
+                value={formData.config?.apiKey || ''}
+                onChange={(e) => setFormData({
+                  ...formData,
+                  config: { ...formData.config, apiKey: e.target.value }
+                })}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                disabled={viewMode}
+              />
+            </div>
+          </>
+        );
+
+      case 'github':
+        return (
+          <>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Repository URL</label>
+              <input
+                type="text"
+                value={formData.config?.repoUrl || ''}
+                onChange={(e) => setFormData({
+                  ...formData,
+                  config: { ...formData.config, repoUrl: e.target.value }
+                })}
+                placeholder="https://github.com/username/repo"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                disabled={viewMode}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Branch</label>
+              <input
+                type="text"
+                value={formData.config?.branch || ''}
+                onChange={(e) => setFormData({
+                  ...formData,
+                  config: { ...formData.config, branch: e.target.value }
+                })}
+                placeholder="main"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                disabled={viewMode}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Access Token</label>
+              <input
+                type="password"
+                value={formData.config?.accessToken || ''}
+                onChange={(e) => setFormData({
+                  ...formData,
+                  config: { ...formData.config, accessToken: e.target.value }
+                })}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                disabled={viewMode}
+              />
+            </div>
+          </>
+        );
 
       default:
         return null;
